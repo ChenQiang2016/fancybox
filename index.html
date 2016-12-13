@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fancybox demo</title>
+    <link rel="stylesheet" href="css/fancybox.css">
+</head>
+<body>
+<div>
+    <div class="demo">Demo1：动态效果</div>
+    <div><a id="demo1" href="images/1.jpg">
+        <!--<img src="images/1.jpg" alt="" style="height: 200px;width: auto;" />-->
+        点击查看
+    </a></div>
+
+    <div class="demo">
+        <h4>Demo2：图片集，支持键盘方向键</h4>
+        <p>
+            <a rel="group" href="images/1.jpg">
+                <img alt="" src="images/1.jpg" style="height: 100px;width: auto;"/>
+            </a>
+            <a rel="group" href="images/2.png">
+                <img alt="" src="images/2.png" style="height: 100px;width: auto;"/>
+            </a>
+            <a rel="group" href="images/3.png">
+                <img alt="" src="images/3.png" style="height: 100px;width: auto;"/>
+            </a>
+            <a rel="group" href="images/4.jpg">
+                <img alt="" src="images/4.jpg" style="height: 100px;width: auto;"/>
+            </a>
+            <a rel="group" href="images/5.jpg">
+                <img alt="" src="images/5.jpg" style="height: 100px;width: auto;"/>
+            </a>
+        </p>
+    </div>
+
+    <div class="demo">
+        <h4>Demo3：加载DIV，并固定在浏览器中央</h4>
+        <p><a id="showdiv" href="#inline" title="显示一个DIV内容">点击这里</a></p>
+    </div>
+</div>
+
+<div style="display:none">
+    <div id="inline" style="width:800px; height:600px; overflow:auto">
+        <p>
+            <img src="images/1.jpg" alt="" style="float:left; margin:4px"/>
+            我们在设计WEB前端时，从前端交互设计的角度考虑，如何使用让产品易用，有效而让人愉悦的技术，了解目标用户和他们的期望，了解用户在同产品交互时彼此的行为，了解“人”本身的心理和行为特点，同时，还包括了解各种有效的交互方式，并对它们进行增强和扩充。
+        </p>
+        <p>
+            交互设计是一个过程，它不仅仅是画线框图。交互设计最关键的两个环节是页面流程和页面布局，前者建立清晰的架构和严密的逻辑，后者整合零散的信息并确定分明的主次关系。这一切都是为了我们的终极目标——让我们的界面符合用户的预期，不带给他们任何的意外。一切都在用户的意料之中。</p>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox-1.3.1.pack.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        $("#demo1").fancybox();
+    });
+
+    $("a[rel=group]").fancybox({
+        'titlePosition': 'over',
+        'cyclic': true,
+        'titleFormat': function (title, currentArray, currentIndex, currentOpts) {
+            return '<span id="fancybox-title-over">' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+        }
+    });
+
+    $("#showdiv").fancybox({'centerOnScroll': true});
+</script>
+</body>
+</html>
